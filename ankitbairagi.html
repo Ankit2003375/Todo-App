@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {   margin: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(24, 6, 6);
+
+
+  }
+        
+#maincon{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   flex-direction: column;
+   height: auto;
+   width: auto;
+   border: 2px solid rgb(17, 17, 56);
+   background-color:rgb(255, 15, 15);
+   box-shadow: 5px 4px 4px ; 
+border-radius: 14px;
+}
+    h1{
+
+margin-top: 0px;
+border-bottom: 2px solid black;
+
+    }
+#inp{
+    padding: 7px;
+    border-radius: 13px;
+    background-color: rgb(243, 243, 233);
+    font-size: 14px;
+    box-shadow: 3px 4px 3px;
+
+    
+   }
+
+   #btn{
+
+padding: 7px;
+background-color: rgb(115, 107, 107);
+box-shadow: 3px 4px 3px;
+border-radius: 11px;
+font-size: 15px;
+   }
+   button{
+
+    background-color: blue;
+    padding: 8px;
+    border-radius: 6px;
+    margin: 5px;
+ 
+   }
+   
+  h3{
+display: flex;
+justify-content: space-between;
+
+ } 
+input {
+ 
+border-radius: 8px;
+
+}
+
+
+    </style>
+</head>
+<body>
+    
+    <div id="maincon">
+        <h1>To Do Application</h1>
+       
+        <div id="imaincon">
+            
+            <input type="text" id="inp" placeholder="enter any character">
+            <button id="btn"> SUBMIT</button>
+            <ul id="list"></ul>
+        </div>
+    </div>
+    <script>
+        //start of submit button click
+        var btn=document.getElementById('btn');
+     
+function handleTask()
+{
+var newtask= document.createElement('h3');
+var listtask = document.getElementById('list');
+listtask.appendChild(newtask)
+var tasktext = document.createElement('span');
+ tasktext.textContent=document.getElementById('inp').value;
+    newtask.appendChild(tasktext);
+ document.getElementById('inp').value= ''; 
+
+ deleteTask(newtask); //create delete button call
+ editTask(newtask); // create edit button call
+
+}
+function deleteTask(newtask) // create delete button
+{
+   
+ var delbtn=document.createElement("button")
+ delbtn.textContent='DELETE'
+ newtask.appendChild(delbtn)
+ 
+ function btnRemove()
+ {
+    newtask.remove()
+ }
+ 
+    delbtn.addEventListener('click',btnRemove);
+
+}
+ //end of delete button code 
+
+function editTask(newtask) //edit button code start
+{
+ var editbtn1=document.createElement("button")
+ editbtn1.textContent='EDIT'
+ newtask.appendChild(editbtn1)
+
+
+function editBtnclick() //click edit button create save change button
+{
+    var taskcontent= newtask.querySelector('span').textContent;
+
+    var inputField = document.createElement('input');
+newtask.appendChild(inputField,editBtnclick); 
+
+var save1 = document.createElement('button');
+save1.textContent='Save change'
+newtask.appendChild(save1)  
+ function savebtnclick() // save change button work
+ {
+newtask.querySelector('span').textContent=inputField.value;
+save1.remove()
+inputField.remove()
+ }
+save1.addEventListener('click',savebtnclick);
+// end save change button remove
+}
+editbtn1.addEventListener('click',editBtnclick);
+// end of edit button click work
+}
+
+btn. addEventListener('click',handleTask)
+
+
+    </script>
+</body>
+</html>

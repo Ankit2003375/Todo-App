@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(24, 6, 6);
+        }
+        #maincon {
+        
+            height: auto;
+            width: auto;
+            border: 2px solid rgb(17, 17, 56);
+            background-color:rgb(127, 127, 164);
+            box-shadow: 5px 4px 4px;
+            border-radius: 14px;
+            padding: 25px;
+        }
+           
+#btn{
+
+   background-color: rgb(34, 34, 70);
+   color: aliceblue;
+   width: 60px;
+   height: 30px;
+    border-radius: 10px;
+    box-shadow: 10px;
+    margin-left: 30px;
+   
+}
+        h1 {
+            margin-top: 0px;
+           
+            margin-left: 50px;
+            background-color: rgb(173, 4, 4);
+            width: 300px;
+            border-radius: 10px;
+        }
+        #email {
+        
+            margin-left :45px ;
+        }
+       #password{
+
+        margin-left: 12px;
+       }
+        #cont{
+            margin-left: 95px;
+        }
+        #age{
+            margin-left: 100px;
+        }
+        #date{
+            margin-left: 90px;
+        }
+        label {
+            font-size: 22px;
+            font-weight: bold;
+             
+        }
+     #btn{   
+
+        margin-left: 135px;
+        height: 40px;
+        width: 85px;
+     }
+input{
+
+    background-color: rgb(235, 232, 227);
+    border-radius: 10px;
+}
+span{
+
+    color: rgb(99, 8, 8);
+    font-size: 23px;
+}
+    </style>
+</head>
+<body>
+    <form action="ankitbairagi.html"id="signUpform" onsubmit="handlesubmit(event)">
+a
+    <div id="maincon">
+        <h1> Registeration form</h1>
+        <hr>
+             <Label for="fname"> Enter your First Name</Label>
+            <input type="text" id="fname" placeholder="Enter your name" required>
+            <span id="namecheack"></span>
+            <br>
+            <br>
+            <Label for="lname"> Enter your Last  Name</Label>
+            <input type="text" id="lname" placeholder="Enter your name" required>
+            <span id="lastNameCheack"></span>
+            <br>
+            <br>
+            <label for="email">Enter Your email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <span id="emailcheck"></span>
+            <br>
+            <br>
+            <label for="password">Enter your password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <span id="passwordcheck"></span>
+            <br>
+            <br>
+            <label for="cont"> Contact No </label>
+            <input type="number" id="cont" placeholder="contact no 10 Digit"required>
+           <span id="contactcheck"></span>
+            <br>
+            <br>
+            <label for="age">Enter Your Age</label>
+            <input type="number" id="age" placeholder=" age" max="35" min="18"  required>
+           <br>
+           <br>
+           <label for="date"> Date of Birth</label>
+           <input type="date" id="date" placeholder="date" required>
+           <span id="cleakAge"></span>
+           <br>
+           <br>
+            <button type="submit" id="btn">Submit</button>
+            <br>
+            <br>
+
+            </div>
+        </form>
+   <script>
+    //start of name validation
+    var firstName= document.getElementById("fname");
+    var fnameflag=false;
+   var lnameflag=false;
+   var emailflag=false;
+   var passwordflag=false;
+   var contactflag=false;
+   var dateflag=false;
+
+    function handleName(event)
+     {  
+   var  nameregex=/^[A-Za-z]+([ '][A-Za-z]+)*$/;
+
+
+  var errorName= document.getElementById("namecheack");
+
+  if(nameregex.test(fname.value))
+  {
+  errorName.innerHTML="";
+   fnameflag=true;
+    }
+    else
+    {
+     errorName.innerHTML='please enter a valid name';
+      fnameflag=false;
+       
+    }
+}
+    firstName.addEventListener('change',handleName);
+    //end of name validation
+    //start of last name validation
+    var lastName= document.getElementById("lname");
+    function handleLName(event)
+     {  
+   var Lnameregex=/^[A-Za-z]+([ '][A-Za-z]+)*$/;
+
+   var errorLName= document.getElementById("lastNameCheack");
+
+  if(Lnameregex.test(lname.value))
+  {
+      errorLName.innerHTML="";
+       lnameflag=true;
+    }
+    else
+    {
+     errorLName.innerHTML='please enter a valid last name';
+       
+         lnameflag=false;
+    }
+}
+    lastName.addEventListener('change',handleLName);
+    //end of last name validation
+    //start of email validation
+    var email = document.getElementById('email');
+
+    function handlecheckemail(event)
+    {
+        var emailregex=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        var errorEmail= document.getElementById("emailcheck");
+        if(emailregex.test(email.value))
+        {
+            errorEmail.innerHTML="";
+            emailflag=true;
+        }
+        else
+        {
+            errorEmail.innerHTML='please enter a valid email';
+           
+            emailflag=false;
+        }
+    }
+    email.addEventListener('change',handlecheckemail);
+    //end of email validation
+    //start of password validation
+ var password = document.getElementById('password');
+ function handlecheckpassword(event)
+ {
+    var passwordregex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
+var errorpassword = document.getElementById('passwordcheck');
+if(passwordregex.test(password.value))
+{
+errorpassword.innerHTML="";
+passwordflag=true;
+}
+else{
+
+    errorpassword.innerHTML='please enter a valid password';
+    passwordflag=false;   
+
+    
+}
+ }
+ password.addEventListener('change',handlecheckpassword);
+ //start of contact validation
+ var cont =document.getElementById('cont');
+    function handlecheckcontact(event)
+    {
+     var contactregex=/^\d{10}$/;
+      var errorContact = document.getElementById('contactcheck');  
+      if( contactregex.test(cont.value))
+      {    
+
+errorContact.innerHTML="";
+contactflag=true;
+      }
+      else
+      {
+        errorContact.innerHTML='please enter a valid contact no 10 digit';
+        contactflag=false;
+        
+
+
+      }     
+
+
+    }
+    cont.addEventListener('change',handlecheckcontact);
+    //end of contact validation
+    //start of age validation
+    var date = document.getElementById('date');
+    function handlecheckage(event)
+    {
+        var dateRegex=/^(20[0-9]{2})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+
+        var errordate= document.getElementById("cleakAge");
+        if(dateRegex.test(date.value))
+        {
+            errordate.innerHTML="";
+            dateflag=true;
+          
+        }
+        else
+        {
+            errordate.innerHTML='age above 1999';
+            dateflag=false;
+            
+        }
+    }
+    date.addEventListener('change',handlecheckage);
+    var form = document.getElementById('');
+    function handlesubmit(event)
+    { 
+    event.preventDefault();
+    console.log('submit');
+    if(fnameflag && lnameflag && emailflag && passwordflag && contactflag && dateflag)
+
+    signUpform.submit();
+    }
+   </script> 
+</body>
+</html>
